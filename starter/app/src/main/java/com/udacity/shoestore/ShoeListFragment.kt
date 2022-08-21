@@ -7,15 +7,18 @@ import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
 import com.udacity.shoestore.models.Shoe
 import com.udacity.shoestore.models.ShoeListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_shoe_list.*
+import timber.log.Timber
 
 class ShoeListFragment : Fragment() {
 
@@ -30,7 +33,8 @@ class ShoeListFragment : Fragment() {
         toolbar.inflateMenu(R.menu.logout_menu)
         toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
-                R.id.logout -> view?.findNavController()?.navigate(ShoeListFragmentDirections.actionShoeListFragmentToLoginFragment())
+                R.id.logout -> view?.findNavController()
+                    ?.navigate(ShoeListFragmentDirections.actionShoeListFragmentToLoginFragment())
             }
             true
         }
@@ -42,10 +46,16 @@ class ShoeListFragment : Fragment() {
             v.findNavController()
                 .navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
         }
-        viewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
+
+        viewModel = ViewModelProvider(requireActivity()).get(ShoeListViewModel::class.java)
 
         binding.shoeListViewModel = viewModel
-        binding.setLifecycleOwner(this)
+        viewModel.shoeList.observe(viewLifecycleOwner, Observer {
+            for (item in it) {
+                Timber.i(item.name)
+                addShoeCard(item)
+            }
+        })
 
         return binding.root
     }
@@ -64,13 +74,6 @@ class ShoeListFragment : Fragment() {
         shoeContainer.addView(view)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        for (item in viewModel.shoeList.value!!) {
-            addShoeCard(item)
-        }
-    }
-
     override fun onDestroyView() {
         val toolbar = (activity as MainActivity).toolbar
         toolbar.menu.clear()
@@ -79,8 +82,10 @@ class ShoeListFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.logout -> view?.findNavController()?.navigate(ShoeListFragmentDirections.actionShoeListFragmentToLoginFragment())
+            R.id.logout -> view?.findNavController()
+                ?.navigate(ShoeListFragmentDirections.actionShoeListFragmentToLoginFragment())
         }
         return super.onOptionsItemSelected(item)
     }
+
 }
