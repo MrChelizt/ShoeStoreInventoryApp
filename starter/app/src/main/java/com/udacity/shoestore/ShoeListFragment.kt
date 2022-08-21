@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
 import com.udacity.shoestore.models.Shoe
 import com.udacity.shoestore.models.ShoeListViewModel
@@ -25,6 +28,12 @@ class ShoeListFragment : Fragment() {
 
         val toolbar = (activity as MainActivity).toolbar
         toolbar.inflateMenu(R.menu.logout_menu)
+        toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.logout -> view?.findNavController()?.navigate(ShoeListFragmentDirections.actionShoeListFragmentToLoginFragment())
+            }
+            true
+        }
 
         val binding: FragmentShoeListBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_shoe_list, container, false
@@ -66,5 +75,12 @@ class ShoeListFragment : Fragment() {
         val toolbar = (activity as MainActivity).toolbar
         toolbar.menu.clear()
         super.onDestroyView()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.logout -> view?.findNavController()?.navigate(ShoeListFragmentDirections.actionShoeListFragmentToLoginFragment())
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
