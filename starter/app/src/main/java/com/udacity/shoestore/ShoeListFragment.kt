@@ -62,11 +62,11 @@ class ShoeListFragment : Fragment() {
 
     private fun addShoeCard(s: Shoe) {
         val view: View = layoutInflater.inflate(R.layout.shoe_list_item, null)
-        var image: ImageView = view.findViewById(R.id.shoeImage)
-        var name: TextView = view.findViewById(R.id.shoeName)
-        var size: TextView = view.findViewById(R.id.shoeSize)
-        var company: TextView = view.findViewById(R.id.shoeCompany)
-        var description: TextView = view.findViewById(R.id.shoeDescription)
+        val image: ImageView = view.findViewById(R.id.shoeImage)
+        val name: TextView = view.findViewById(R.id.shoeName)
+        val size: TextView = view.findViewById(R.id.shoeSize)
+        val company: TextView = view.findViewById(R.id.shoeCompany)
+        val description: TextView = view.findViewById(R.id.shoeDescription)
         name.text = s.name
         size.text = s.size.toString()
         company.text = s.company

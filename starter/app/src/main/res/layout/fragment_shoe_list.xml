@@ -14,11 +14,13 @@
             type="com.udacity.shoestore.models.Shoe" />
     </data>
 
+    <!--ConstraintLayout is used to align fab-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/shoe_list_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!--Toolbar was added as spacer-->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar3"
             android:layout_width="match_parent"
@@ -30,8 +32,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!--ScrollView was used to display multiple elements that may overflow from screen-->
         <ScrollView
-            android:id="@+id/scrollView3"
+            android:id="@+id/shoeListScrollView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:fillViewport="true"
@@ -43,6 +46,7 @@
             app:layout_constraintVertical_bias="0.0"
             tools:context=".ShoeListFragment">
 
+            <!--LinearLayout was used to organize and align items-->
             <LinearLayout
                 android:id="@+id/shoeContainer"
                 android:layout_width="match_parent"
@@ -64,10 +68,10 @@
             android:src="@drawable/ic_add"
             app:layout_constraintBottom_toBottomOf="@+id/shoe_list_layout"
             app:layout_constraintEnd_toEndOf="@+id/shoe_list_layout"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.954"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.927" />
+            app:layout_constraintVertical_bias="0.976" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

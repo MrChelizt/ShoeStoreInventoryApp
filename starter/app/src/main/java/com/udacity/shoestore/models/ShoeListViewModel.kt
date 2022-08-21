@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class ShoeListViewModel : ViewModel() {
-    //TODO: step:10 -> add LiveData that returns list of shoes
 
     private val _shoeList = MutableLiveData<MutableList<Shoe>>()
     val shoeList: LiveData<MutableList<Shoe>>
@@ -20,6 +19,7 @@ class ShoeListViewModel : ViewModel() {
         resetShoe()
     }
 
+//    shoe images are placeholders
     private fun initShoeList(): MutableList<Shoe>? {
         return mutableListOf(
             Shoe("adidas", 12.0, "adidas", "running", mutableListOf("adidas.jpg")),
