@@ -1,11 +1,29 @@
 <resources>
     <string name="app_name">ShoeStore</string>
     <string name="email_hint">Enter Email</string>
+    <string name="email">Email</string>
     <string name="password_hint">Enter Password</string>
+    <string name="password">Password</string>
     <string name="new_login">New Login</string>
-    <string name="existing_account">Logging With Existing Account</string>
+    <string name="existing_account">Login With Existing Account</string>
     <string name="welcome">Welcome!</string>
     <string name="logout">Log Out</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="instructions">Instructions</string>
+    <string name="start">Start</string>
+    <string name="name">Name</string>
+    <string name="company">Company</string>
+    <string name="size">Size</string>
+    <string name="description">Description</string>
+    <string name="welcome_message">Hi there!\n\n
+\t\tMy name is [name] and I am very happy to welcome you on board with [Company]!\n\n
+\t\tYou joined thousands of [user’s persona profession] who are already skyrocketing their sales with [Company] by:\n
+[Benefit 1] [Benefit 2] [Benefit 3]\n\n
+\t\tThere’s just one more tiny step you need to take to achieve all these amazing things:\n\n
+[CTA that activates the customer]</string>
+    <string name="instructions_message">Welcome to the shoe store!\n\n
+    You can find our default shoe list which includes some small indie brands.\n\n
+        You should also check all the different and colorful images added for these brands!\n\n
+    And Hey! Guess what! You can also add new shoes by pressing brightest button on the screen!</string>
 </resources>
